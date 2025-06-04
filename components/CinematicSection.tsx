@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function CinematicSection() {
   const modelRef = useRef<THREE.Group>(null)
-  const { scene, camera } = useThree()
+  const { camera } = useThree()
   const gltf = useGLTF('/scene.gltf') // Make sure this path matches the public path
 
   // Light setup
@@ -81,7 +81,7 @@ export default function CinematicSection() {
         },
       }
     )
-  }, [])
+  })
 
   useFrame(() => {
     // Slight parallax

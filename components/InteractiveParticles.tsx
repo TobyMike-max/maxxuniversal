@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useEffect, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { Points, PointMaterial, Effects } from '@react-three/drei'
+import { Points, PointMaterial } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 export default function InteractiveParticles() {

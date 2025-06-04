@@ -3,7 +3,6 @@
 import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { rotate } from 'three/tsl'
 
 export default function GridWireCube({ scale = 1, rotateCube = false }) {
   const groupRef = useRef<THREE.Group>(null)

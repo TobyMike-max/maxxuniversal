@@ -1,12 +1,11 @@
 'use client'
 
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Environment, useGLTF, PerspectiveCamera } from '@react-three/drei'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import * as THREE from 'three'
-import RotatingCube from './RotatingCube'
 
 gsap.registerPlugin(ScrollTrigger)
 

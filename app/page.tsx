@@ -8,7 +8,6 @@ import WireframeCube from '@/components/WireFrameCube'
 import { Canvas } from '@react-three/fiber'
 import Image from 'next/image'
 import InteractiveParticles from '@/components/InteractiveParticles'
-import Link from 'next/link'
 import CinematicSection from '@/components/CinematicSection'
 
 

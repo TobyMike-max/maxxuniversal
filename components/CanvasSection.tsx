@@ -5,7 +5,6 @@ import { Canvas } from '@react-three/fiber'
 import WireframeCube from './WireFrameCube'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import * as THREE from 'three'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,7 +13,7 @@ export default function CanvasSection() {
     const [scale, setScale] = useState(0) // starting hidden
 
     useEffect(() => {
-        let scaleVal = { s: 0 }
+        const scaleVal = { s: 0 }
 
         const tl = gsap.timeline({
             scrollTrigger: {

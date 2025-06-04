@@ -1,7 +1,7 @@
 'use client'
 
-import { Canvas, useFrame } from '@react-three/fiber'
-import { useRef, useEffect, useState } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { useRef, useEffect } from 'react'
 import { Box, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 function GrowingBox() {
   const ref = useRef<THREE.Mesh>(null)
-  const [scale, setScale] = useState(1)
 
   useEffect(() => {
     gsap.to(ref.current!.scale, {
