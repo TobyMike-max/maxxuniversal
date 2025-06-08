@@ -1,10 +1,12 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useLayoutEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { Text3D, Center, Edges } from '@react-three/drei';
 
-export default function GridWireCube({ scale = 1, rotateCube = false }) {
+
+export default function GridWireCube({ scale = 1, rotateCube = false, post }: { scale?: number; rotateCube?: boolean; post: [number, number, number] }) {
   const groupRef = useRef<THREE.Group>(null)
 
   const lines = useMemo(() => {
@@ -56,8 +58,8 @@ export default function GridWireCube({ scale = 1, rotateCube = false }) {
     if (!groupRef.current) return
 
     if (rotateCube) {
-      groupRef.current.rotation.x += 0.003
-      groupRef.current.rotation.y += 0.003
+      groupRef.current.rotation.x += 0.002
+      groupRef.current.rotation.y += 0.001
     } else {
       // Reset rotation when scrolling up
       groupRef.current.rotation.x = 0
@@ -66,14 +68,35 @@ export default function GridWireCube({ scale = 1, rotateCube = false }) {
   })
 
   return (
-    <group ref={groupRef} scale={scale}>
+    <group ref={groupRef} scale={scale} position={post}>
       <lineSegments geometry={lines}>
         <lineBasicMaterial
           color="#00ffff"
           transparent
-          opacity={0.95}
+          opacity={0.6}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
         />
       </lineSegments>
+      <Center position={[-0.3,0.2,0]}>
+        <group scale={0.8}>
+        <Text3D
+          font="/fonts/helvetiker_bold.typeface.json"
+          size={0.45}
+          height={0.9}
+          curveSegments={8}
+          bevelEnabled={false}
+        >
+          MAXX
+          <meshStandardMaterial color="#5EC3E9" transparent opacity={0} />
+          <Edges
+            color="#00ffff"
+            scale={0.9}
+            threshold={7}
+          />
+        </Text3D>
+        </group>
+      </Center>
     </group>
   )
 }

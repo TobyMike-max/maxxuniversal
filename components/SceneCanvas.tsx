@@ -1,15 +1,14 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
 import { useRef, useEffect } from 'react'
-import { Box, OrbitControls } from '@react-three/drei'
+import { Box } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function GrowingBox() {
+export default function GrowingBox() {
   const ref = useRef<THREE.Mesh>(null)
 
   useEffect(() => {
@@ -28,17 +27,7 @@ function GrowingBox() {
 
   return (
     <Box ref={ref} args={[1, 1, 1]}>
-      <meshBasicMaterial wireframe color="white" />
+      <meshBasicMaterial wireframe color="#00ffff" />
     </Box>
-  )
-}
-
-export default function SceneCanvas() {
-  return (
-    <Canvas className="absolute inset-0 z-0" camera={{ position: [0, 0, 5], fov: 60 }}>
-      <ambientLight />
-      <GrowingBox />
-      <OrbitControls enableZoom={false} />
-    </Canvas>
   )
 }
